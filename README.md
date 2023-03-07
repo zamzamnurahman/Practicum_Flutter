@@ -1,6 +1,7 @@
 # Practicum_Flutter
 this is List learn to how development mobile programming with Dart and Flutter 
-in Sunda : ieu sabaraha tugas kangge kumaha carana nyieun aplikasi hape make Dart jeung Flutter
+
+In Sunda : ieu sabaraha tugas kangge kumaha carana nyieun aplikasi hape make Dart jeung Flutter
 
 ## How to clone
 
