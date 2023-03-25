@@ -25,6 +25,22 @@ List<News> newsData = [
     image:
         "https://d1bpj0tv6vfxyp.cloudfront.net/articles/813691_24-11-2020_11-2-8.webp",
   ),
+  News(
+    id: 4,
+    title: "Waspada Stroke, Kenali Gejala dan Pencegahannya",
+    description:
+        "Rumah Sakit Umum Daerah (RSUD) dr R Soetijono Kabupaten Blora, Jawa Tengah, pada tahun 2023 ini memulai membangun Stroke Center. Layanan ini menjadi langkah cerdas pengelola rumah sakit pelat merah ini sebagai bentuk tuntutan kebutuhan. Pihak pengelola RSUD Blora mempertimbangkan bahwa stroke masuk lima besar penyakit dengan kesembuhan jangka panjang dan berisiko tinggi kematian. Seperti penyakit jantung, kanker, penyakit paru-paru, stroke dan diabetes. Menurut Direktur RSUD Blora dr Puji Basuki, pendirian Stroke Center didasari dengan berbagai pertimbangan. Seperti kasus stroke di Blora dan sekitarnya meningkat.",
+    image:
+        "https://rsudblora.blorakab.go.id/wp-content/uploads/2023/03/ilustrasi-brain-aneursym_169.jpeg",
+  ),
+  News(
+    id: 5,
+    title: "WAKTU DAN JENIS OLAHRAGA TERBAIK SAAT PUASA",
+    description:
+        "Umat muslim diwajibkan untuk berpuasa setiap bulan Ramadhan. Saat berpuasa tubuh tidak mendapat suplai makanan dan minuman dari luar. Meskipun tidak makan dan minum, bukan berarti kita terus menjadi tidak aktif dan tidak boleh berolahraga. Puasa di bulan Ramadhan bukanlah hambatan untuk tetap berolahraga demi manfaat sehat. Apalagi di masa pandemi seperti sekarang dimana dengan berolahraga akan menambah imunitas tubuh, sehingga mengurangi resiko terkena infeksi. Selain itu ketika berpuasa glikogen atau karbohidrat yang disimpan kemungkinan besar akan habis dan tubuh akan membakar lebih banyak lemak daripada biasanya, sehingga dapat membantu mengurangi berat badan.",
+    image:
+        "https://rsudblora.blorakab.go.id/wp-content/uploads/2021/04/gambar-1-300x152.jpg",
+  ),
 ];
 
 List<News> hotNews = [

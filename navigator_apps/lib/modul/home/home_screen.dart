@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:navigator_apps/modul/menu/menu_screen.dart';
+import 'package:navigator_apps/modul/news/news_screen.dart';
 
 import '../../models/user.dart';
 import 'header_widget.dart';
@@ -25,13 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return OrientationBuilder(builder: (context, orientation) {
-      return GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: Scaffold(
-          body: ListView(
+    return Scaffold(
+      body: IndexedStack(
+        index: _tabIndex,
+        children: [
+          ListView(
             children: [
               HeaderWidget(widget: widget),
               const SearchbarWidget(),
@@ -39,10 +39,12 @@ class _HomeScreenState extends State<HomeScreen> {
               const LatesNewsWidget()
             ],
           ),
-          bottomNavigationBar: bottomNavigation(),
-        ),
-      );
-    });
+          const NewsScreen(),
+          const MenuScreen(),
+        ],
+      ),
+      bottomNavigationBar: bottomNavigation(),
+    );
   }
 
   BottomNavigationBar bottomNavigation() {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:navigator_apps/models/news.dart';
 
 import '../../data/news_data.dart';
+import '../../widget/news_item_widget.dart';
 
 class LatesNewsWidget extends StatelessWidget {
   const LatesNewsWidget({
@@ -25,20 +27,8 @@ class LatesNewsWidget extends StatelessWidget {
           child: Column(
               children: List.generate(
                   3,
-                  (int i) => Card(
-                        child: ListTile(
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 5,
-                          ),
-                          leading: Image.network(newsData[i].image!),
-                          title: Text(newsData[i].title!),
-                          subtitle: Text(
-                            newsData[i].description!,
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
+                  (int i) => NewsItemWidget(
+                        news: newsData[i],
                       ))),
         )
       ],
