@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../models/user.dart';
+import 'header_widget.dart';
+import 'hotnews_widget.dart';
+import 'lates_news_widget.dart';
+import 'searchbar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key, required this.user});
@@ -12,17 +16,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final categories = [
-    "School",
-    "Tech",
-    "Literature",
-    "Nature",
-    "Gen-z",
-    "Car",
-    "Sport",
-    "Game",
-  ];
-
   int _tabIndex = 0;
   _selectedTabIndex(int value) {
     setState(() {
@@ -32,40 +25,44 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return OrientationBuilder(builder: (context, orientation) {
-      return Scaffold(
-        body: Column(
-          children: [
-            orientation == Orientation.portrait
-                ? Container(
-                    height: MediaQuery.of(context).padding.top,
-                  )
-                : const SizedBox(),
-            const SizedBox(
-              height: 16,
-            ),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _tabIndex,
-          onTap: _selectedTabIndex,
-          items: const [
-            BottomNavigationBarItem(
-              label: "Home",
-              icon: Icon(Icons.home),
-            ),
-            BottomNavigationBarItem(
-              label: "News",
-              icon: Icon(Icons.newspaper),
-            ),
-            BottomNavigationBarItem(
-              label: "Menu",
-              icon: Icon(Icons.menu),
-            )
-          ],
+      return GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: Scaffold(
+          body: ListView(
+            children: [
+              HeaderWidget(widget: widget),
+              const SearchbarWidget(),
+              const HotNewsWidget(),
+              const LatesNewsWidget()
+            ],
+          ),
+          bottomNavigationBar: bottomNavigation(),
         ),
       );
     });
+  }
+
+  BottomNavigationBar bottomNavigation() {
+    return BottomNavigationBar(
+      currentIndex: _tabIndex,
+      onTap: _selectedTabIndex,
+      items: const [
+        BottomNavigationBarItem(
+          label: "Home",
+          icon: Icon(Icons.home),
+        ),
+        BottomNavigationBarItem(
+          label: "News",
+          icon: Icon(Icons.newspaper),
+        ),
+        BottomNavigationBarItem(
+          label: "Menu",
+          icon: Icon(Icons.menu),
+        )
+      ],
+    );
   }
 }

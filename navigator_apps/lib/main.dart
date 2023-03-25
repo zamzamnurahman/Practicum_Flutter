@@ -11,6 +11,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.white,
+      ),
       title: "Apps Pertemuan 5",
       routeInformationProvider: AppRoutes.goRouter.routeInformationProvider,
       routerDelegate: AppRoutes.goRouter.routerDelegate,
