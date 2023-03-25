@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:navigator_apps/models/news.dart';
 import 'package:navigator_apps/modul/home/home_screen.dart';
 import 'package:navigator_apps/modul/news_detail/new_detail_screen.dart';
 
@@ -57,7 +58,7 @@ class AppRoutes {
     if (state.params['id'] != null) {
       return MaterialPage(
           child: NewsDetailScreen(
-        newsId: state.params['id'],
+        news: state.extra as News,
       ));
     } else {
       return const MaterialPage(
@@ -84,7 +85,7 @@ class AppRoutes {
       ),
       GoRoute(
         name: newDetail,
-        path: "/new-detail/:id",
+        path: "/news-detail/:id",
         pageBuilder: _newDetailRouteBuilder,
       ),
     ],

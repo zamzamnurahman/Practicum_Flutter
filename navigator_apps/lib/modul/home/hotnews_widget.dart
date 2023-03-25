@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:navigator_apps/data/news_data.dart';
 
 class HotNewsWidget extends StatelessWidget {
@@ -21,7 +22,15 @@ class HotNewsWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).pushNamed(
+              'news-detail',
+              params: {
+                'id': hotNews[0].id.toString(),
+              },
+              extra: hotNews[0],
+            );
+          },
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 10),
             height: 250,

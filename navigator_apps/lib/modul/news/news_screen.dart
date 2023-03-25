@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:navigator_apps/data/news_data.dart';
 import 'package:navigator_apps/models/news.dart';
+import 'package:navigator_apps/modul/home/header_widget.dart';
 import 'package:navigator_apps/widget/news_item_widget.dart';
 
 class NewsScreen extends StatelessWidget {

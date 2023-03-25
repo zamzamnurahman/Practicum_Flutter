@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../models/news.dart';
 
@@ -14,6 +15,15 @@ class NewsItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        onTap: () {
+          GoRouter.of(context).pushNamed(
+            "news-detail",
+            params: {
+              "id": news.id.toString(),
+            },
+            extra: news,
+          );
+        },
         contentPadding: const EdgeInsets.symmetric(
           vertical: 10,
           horizontal: 5,
