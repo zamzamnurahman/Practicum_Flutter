@@ -38,3 +38,5 @@ click banner bottom left to download :
 - press key '.' in keyboard for change github to VsCode online
 
 # Hatur Thank You 😃
+
+## Jangan lupa kasih bintang biar tidak errorrrr
