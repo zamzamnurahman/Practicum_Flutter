@@ -1,13 +1,14 @@
 import 'package:navigator_apps/models/news.dart';
 
+///[* data berita]
 List<News> newsData = [
   News(
-    id: 1,
-    title: "Kenali Manfaat dan Tips Berpuasa bagi Pengidap Stroke",
+    id: 1, ///[* id berita]
+    title: "Kenali Manfaat dan Tips Berpuasa bagi Pengidap Stroke", ///[* judul berita]
     description:
-        "Puasa bermanfaat untuk kesehatan tubuh, salah satunya mengurangi risiko dan mengatasi stroke. Jika dilakukan dengan cara yang tepat, puasa bisa memberi manfaat untuk pengidap stroke. Puasa memiliki banyak manfaat untuk kesehatan tubuh. Umumnya, masyarakat awam mengetahui manfaat puasa untuk menurunkan berat badan dan memperlancar pencernaan tubuh. Tetapi, ternyata tidak hanya itu, puasa juga membantu mengurangi risiko stroke dan membantu penyembuhan bagi seseorang yang mengidap stroke. Banyak manfaat puasa untuk pengidap stroke. Ahli medis menyatakan, puasa berdampak positif dalam meminimalisir risiko stroke.",
+        "Puasa bermanfaat untuk kesehatan tubuh, salah satunya mengurangi risiko dan mengatasi stroke. Jika dilakukan dengan cara yang tepat, puasa bisa memberi manfaat untuk pengidap stroke. Puasa memiliki banyak manfaat untuk kesehatan tubuh. Umumnya, masyarakat awam mengetahui manfaat puasa untuk menurunkan berat badan dan memperlancar pencernaan tubuh. Tetapi, ternyata tidak hanya itu, puasa juga membantu mengurangi risiko stroke dan membantu penyembuhan bagi seseorang yang mengidap stroke. Banyak manfaat puasa untuk pengidap stroke. Ahli medis menyatakan, puasa berdampak positif dalam meminimalisir risiko stroke.", ///[* isi berita]
     image:
-        "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/03/24070747/Kenali-Manfaat-dan-Tips-Berpuasa-bagi-Pengidap-Stroke.png.webp",
+        "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/03/24070747/Kenali-Manfaat-dan-Tips-Berpuasa-bagi-Pengidap-Stroke.png.webp", /// [* photo berita]
   ),
   News(
     id: 2,
@@ -43,6 +44,7 @@ List<News> newsData = [
   ),
 ];
 
+///[* berita terpopuler]
 List<News> hotNews = [
   News(
     id: 4,

@@ -14,7 +14,7 @@ class User {
     this.profileImage,
     this.phoneNumber,
   });
-
+  ///[* data profile]
   factory User.dummy() {
     return User(
       id: 027,

@@ -15,6 +15,8 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.white,
+        ///[* warna background canvas]
+        /// scaffoldBackgroundColor: Colors.blue
       ),
       title: "Apps Pertemuan 5",
       routeInformationProvider: AppRoutes.goRouter.routeInformationProvider,
