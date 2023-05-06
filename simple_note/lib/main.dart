@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_note/utils/routes.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +10,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp.router(
+      title: "Simple Note",
+      routeInformationParser: Approutes.router.routeInformationParser,
+      routerDelegate: Approutes.router.routerDelegate,
+      routeInformationProvider: Approutes.router.routeInformationProvider,
     );
   }
 }
