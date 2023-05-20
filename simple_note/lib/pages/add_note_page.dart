@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:simple_note/services/database_service.dart';
 
 import '../models/note.dart';
@@ -64,8 +65,14 @@ class _AddNotePageState extends State<AddNotePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          DatabaseService.db.addNewNotes(Note());
+        onPressed: () async {
+          Note note = Note(
+            title: _titleCtrl.text,
+            description: _descriptionCtrl.text,
+            createdAt: DateTime.now().toIso8601String(),
+          );
+          GoRouter.of(context).pop();
+          await DatabaseServices().addNote(note);
         },
         label: const Text("Save Note"),
       ),

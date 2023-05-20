@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:simple_note/services/database_service.dart';
+
+import '../models/note.dart';
+import 'package:intl/intl.dart';
 
 class CardNote extends StatelessWidget {
+  final Note note;
   const CardNote({
     super.key,
+    required this.note,
   });
 
   @override
@@ -12,12 +18,41 @@ class CardNote extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      title: const Text("Title Note"),
-      subtitle: const Text("Description Note"),
-      trailing: const Text(
-        "Created at : Monday, 23 April 2023",
-        style: TextStyle(fontSize: 10),
+      title: Text(note.title),
+      subtitle: Text(note.description),
+      trailing: Text(
+        "Created at : ${DateFormat("EEEE, dd MMMM yyyy").format(
+          DateTime.parse(note.createdAt),
+        )}",
+        style: const TextStyle(fontSize: 10),
       ),
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text("Remove Note ?"),
+            actions: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text("Cancel"),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () async {
+                  Navigator.pop(context);
+                  await DatabaseServices().deleteNote(note);
+                },
+                child: const Text("Remove"),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }
