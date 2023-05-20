@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:simple_note/services/database_service.dart';
 
 import '../models/note.dart';
-import 'package:intl/intl.dart';
 
 class CardNote extends StatelessWidget {
   final Note note;
@@ -21,9 +20,7 @@ class CardNote extends StatelessWidget {
       title: Text(note.title),
       subtitle: Text(note.description),
       trailing: Text(
-        "Created at : ${DateFormat("EEEE, dd MMMM yyyy").format(
-          DateTime.parse(note.createdAt),
-        )}",
+        "Created at : ${note.createdAt}",
         style: const TextStyle(fontSize: 10),
       ),
       onTap: () {
