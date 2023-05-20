@@ -1,8 +1,8 @@
 import 'package:intl/intl.dart';
 
 extension DateFormating on String {
-  String formatDate(String date) {
-    DateTime dateFormated = DateTime.parse(date);
+  String formatDate() {
+    DateTime dateFormated = DateTime.parse(this);
     DateFormat formatter = DateFormat("EEEE, dd MMMM yyyy");
     final String formated = formatter.format(dateFormated);
     return formated;

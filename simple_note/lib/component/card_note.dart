@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_note/extensions/format_date.dart';
 import 'package:simple_note/services/database_service.dart';
 
 import '../models/note.dart';
@@ -20,36 +21,40 @@ class CardNote extends StatelessWidget {
       title: Text(note.title),
       subtitle: Text(note.description),
       trailing: Text(
-        "Created at : ${note.createdAt}",
+        "Created at : ${note.createdAt.formatDate()}",
         style: const TextStyle(fontSize: 10),
       ),
       onTap: () {
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text("Remove Note ?"),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("Cancel"),
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  foregroundColor: Colors.white,
-                ),
-                onPressed: () async {
-                  Navigator.pop(context);
-                  await DatabaseServices().deleteNote(note);
-                },
-                child: const Text("Remove"),
-              )
-            ],
-          ),
-        );
+        alertRemoveNotes(context);
       },
+    );
+  }
+
+  Future<dynamic> alertRemoveNotes(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Remove Note ?"),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Cancel"),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () async {
+              Navigator.pop(context);
+              await DatabaseServices().deleteNote(note);
+            },
+            child: const Text("Remove"),
+          )
+        ],
+      ),
     );
   }
 }
