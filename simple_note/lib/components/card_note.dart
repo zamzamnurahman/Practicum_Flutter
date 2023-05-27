@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:simple_note/extensions/format_date.dart';
 import 'package:simple_note/services/database_service.dart';
 
@@ -19,12 +20,19 @@ class CardNote extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       title: Text(note.title),
-      subtitle: Text(note.description),
+      subtitle: Text(
+        note.description,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+      ),
       trailing: Text(
         "Created at : ${note.createdAt.formatDate()}",
         style: const TextStyle(fontSize: 10),
       ),
       onTap: () {
+        context.goNamed('addNote', extra: note);
+      },
+      onLongPress: () {
         alertRemoveNotes(context);
       },
     );

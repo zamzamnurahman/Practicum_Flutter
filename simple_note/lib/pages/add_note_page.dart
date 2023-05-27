@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note/extensions/format_date.dart';
 import 'package:simple_note/services/database_service.dart';
 
 import '../models/note.dart';
 
 class AddNotePage extends StatefulWidget {
-  const AddNotePage({super.key});
+  Note? note;
+  AddNotePage({super.key, this.note});
 
   @override
   State<AddNotePage> createState() => _AddNotePageState();
@@ -16,8 +18,9 @@ class _AddNotePageState extends State<AddNotePage> {
   late TextEditingController _descriptionCtrl;
   @override
   void initState() {
-    _titleCtrl = TextEditingController();
-    _descriptionCtrl = TextEditingController();
+    _titleCtrl = TextEditingController(text: widget.note?.title ?? "");
+    _descriptionCtrl =
+        TextEditingController(text: widget.note?.description ?? "");
     super.initState();
   }
 
@@ -33,7 +36,7 @@ class _AddNotePageState extends State<AddNotePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: const Text("Add new notes"),
+        title: const Text("Notes"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -48,6 +51,12 @@ class _AddNotePageState extends State<AddNotePage> {
               decoration: const InputDecoration(
                 hintText: "Title",
                 border: InputBorder.none,
+              ),
+            ),
+            Visibility(
+              child: Text(
+                widget.note!.createdAt.formatDate(),
+                textAlign: TextAlign.end,
               ),
             ),
             // const Divider(thickness: 1),
@@ -71,10 +80,15 @@ class _AddNotePageState extends State<AddNotePage> {
             description: _descriptionCtrl.text,
             createdAt: DateTime.now().toIso8601String(),
           );
+          if (widget.note != null) {
+            await DatabaseServices().updateNote(note);
+          } else {
+            await DatabaseServices().addNote(note);
+          }
+          if (!mounted) return;
           GoRouter.of(context).pop();
-          await DatabaseServices().addNote(note);
         },
-        label: const Text("Save Note"),
+        label: Text(widget.note == null ? "Save Note" : "Update Note"),
       ),
     );
   }

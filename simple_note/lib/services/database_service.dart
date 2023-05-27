@@ -21,7 +21,7 @@ class DatabaseServices {
   /// [* memperbaharui satu catatan di database]
   Future<void> updateNote(Note note) async {
     final box = await Hive.openBox(boxName);
-    await box.put(note.key, note);
+    await box.put(note.key.toString(), note);
   }
 
   ///[* menghapus satu catatan di database]

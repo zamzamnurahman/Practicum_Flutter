@@ -3,8 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:simple_note/pages/add_note_page.dart';
 import 'package:simple_note/pages/home_page.dart';
 
+import '../models/note.dart';
+
 class Approutes {
   static const home = "home";
+  static const note = "note";
   static const addNote = "addNote";
 
   static Page _homePageBuilder(BuildContext context, GoRouterState state) {
@@ -14,8 +17,9 @@ class Approutes {
   }
 
   static Page _addNotePageBuilder(BuildContext context, GoRouterState state) {
-    return const MaterialPage(
-      child: AddNotePage(),
+    Note? note = state.extra as Note;
+    return MaterialPage(
+      child: AddNotePage(note: note),
     );
   }
 
