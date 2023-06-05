@@ -17,7 +17,10 @@ class Approutes {
   }
 
   static Page _addNotePageBuilder(BuildContext context, GoRouterState state) {
-    Note? note = state.extra as Note;
+    Note? note;
+    if (state.extra != null) {
+      note = state.extra as Note;
+    }
     return MaterialPage(
       child: AddNotePage(note: note),
     );

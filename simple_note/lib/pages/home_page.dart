@@ -39,28 +39,29 @@ class _HomePageState extends State<HomePage> {
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: ListView.separated(
-              itemCount: box.length,
+              physics: const BouncingScrollPhysics(),
+              itemCount: box.length + 1,
               itemBuilder: (context, index) {
+                if (index == box.length) {
+                  return const SizedBox(height: 100);
+                }
                 Note note = box.getAt(index);
-                return Dismissible(
-                  key: Key(note.key.toString()),
-                  background: Container(
-                    color: Colors.red,
-                  ),
-                  onDismissed: (_) {
-                    dbService.deleteNote(note).then(
-                          (value) => ScaffoldMessenger.of(_key.currentContext!)
-                              .showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                "Note ${note.title} successfuly deleted",
+                return CardNote(
+                    onDismissed: (_) {
+                      dbService.deleteNote(note).then(
+                            (value) =>
+                                ScaffoldMessenger.of(_key.currentContext!)
+                                    .showSnackBar(
+                              const SnackBar(
+                                behavior: SnackBarBehavior.floating,
+                                content: Text(
+                                  "Note successfuly deleted",
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                  },
-                  child: CardNote(note: note),
-                );
+                          );
+                    },
+                    note: note);
               },
               separatorBuilder: (context, index) {
                 return const SizedBox(

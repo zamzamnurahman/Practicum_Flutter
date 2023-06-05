@@ -7,34 +7,47 @@ import '../models/note.dart';
 
 class CardNote extends StatelessWidget {
   final Note note;
+  final Function(DismissDirection)? onDismissed;
   const CardNote({
     super.key,
+    required this.onDismissed,
     required this.note,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      tileColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+    return Dismissible(
+      key: Key(note.key.toString()),
+      background: Container(
+        color: Theme.of(context).scaffoldBackgroundColor,
       ),
-      title: Text(note.title),
-      subtitle: Text(
-        note.description,
-        maxLines: 2,
-        overflow: TextOverflow.ellipsis,
+      onDismissed: onDismissed,
+      child: ListTile(
+        tileColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        title: Text(
+          note.title,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(
+          note.description,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+        trailing: Text(
+          "Created at : \n${note.createdAt.formatDate()}",
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 10),
+        ),
+        onTap: () {
+          context.goNamed('addNote', extra: note);
+        },
+        onLongPress: () {
+          alertRemoveNotes(context);
+        },
       ),
-      trailing: Text(
-        "Created at : ${note.createdAt.formatDate()}",
-        style: const TextStyle(fontSize: 10),
-      ),
-      onTap: () {
-        context.goNamed('addNote', extra: note);
-      },
-      onLongPress: () {
-        alertRemoveNotes(context);
-      },
     );
   }
 
